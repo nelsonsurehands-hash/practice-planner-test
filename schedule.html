@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<base href="/">
+<meta property="og:site_name" content="The Extra Coach">
+<meta property="og:title" content="Team Schedule">
+<meta property="og:description" content="Practices and games, always up to date. No account needed.">
+<meta property="og:image" content="https://theextracoach.com/icons/icon-512.png">
+<meta property="og:type" content="website">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Team Schedule · The Extra Coach</title>
+<meta name="description" content="The team's practice and game schedule, always up to date.">
+<meta name="theme-color" content="#5b2a86">
+<meta name="robots" content="noindex">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<link rel="icon" href="icons/icon-192.png">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Saira+Condensed:wght@500;700;800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap">
+<link rel="stylesheet" href="css/app.css">
+<style>
+/* Parents' calendar: the same full calendar coaches see in the app (colored days, legend,
+   month by month or the whole season, game list), plus what's next and a phone-calendar button. */
+.sc-top{display:flex;gap:12px;align-items:center;margin:0 0 12px}
+.sc-top img{width:56px;height:56px;object-fit:contain;flex:none}
+.sc-live{display:flex;align-items:center;gap:8px;font-size:13.5px;color:var(--muted);margin:10px 0 12px}
+.sc-live i{width:8px;height:8px;border-radius:50%;background:var(--good);flex:none;box-shadow:0 0 0 3px var(--good-soft)}
+.sc-next{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:10px;margin:0 0 12px}
+.sc-nx{background:var(--surface);border:1px solid var(--line);border-left:5px solid var(--accent);border-radius:12px;padding:12px 14px}
+.sc-nx small{display:block;font-size:11.5px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.sc-nx b{display:block;font-family:var(--display);font-size:23px;text-transform:uppercase;line-height:1.05;margin:2px 0}
+.sc-nx span{font-size:14.5px}
+.sc-cal{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:0 0 4px}
+.sc-calhelp{font-size:13px;color:var(--muted);margin:4px 0 14px}
+.sc-empty{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:24px;text-align:center;color:var(--muted);margin-top:10vh}
+.sc-foot{margin-top:24px;font-size:12px;color:var(--muted);text-align:center}
+#scDay .dlg{max-width:420px}
+.sc-dl{list-style:none;margin:8px 0 14px;padding:0;display:flex;flex-direction:column;gap:8px}
+.sc-dl li{display:flex;flex-wrap:wrap;gap:4px 8px;align-items:baseline;font-size:15.5px}
+.sc-dl small{color:var(--muted);font-size:13.5px}
+.sc-pill{font-size:11.5px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;border-radius:20px;padding:2px 8px;white-space:nowrap}
+.p-home{background:var(--accent);color:var(--accent-ink)}.p-away{background:#7a4b00;color:#fff}
+.p-prac{background:var(--accent-soft);color:var(--accent)}.p-off{background:var(--sunk);color:var(--muted)}.p-note{background:#fff3c4;color:#6b5100}
+.cal-cell{cursor:pointer}
+.cal-list-wrap{margin-top:22px}
+</style>
+</head>
+<body>
+<div id="scLoading" class="sc-empty">Loading schedule…</div>
+<div id="scError" class="sc-empty" hidden></div>
+<div id="scDemo" class="demo-bar" hidden><b>Preview.</b> This calendar is in demo mode, so it only works on this device. Once the app is connected to Supabase, the link works on any phone.</div>
+<main id="scApp" hidden>
+  <div class="cal-head">
+    <div class="sc-top"><img id="scLogo" alt="" hidden><div><div class="eyebrow" id="scEyebrow"></div><h1 class="cal-title" id="scTitle">Practice &amp; Game Calendar</h1></div></div>
+    <div class="cal-season" id="scSeason"></div>
+  </div>
+  <p class="sc-live"><i aria-hidden="true"></i><span>Always up to date: changes from the coach show up here automatically. <span id="scChecked"></span></span></p>
+  <div class="sc-next" id="scNext"></div>
+  <div class="sc-cal" id="scCal"></div>
+  <p class="sc-calhelp" id="scCalHelp"></p>
+  <div class="cal-legend" aria-label="Legend" id="scLegend">
+    <span><i class="sw game"></i>Game</span><span><i class="sw tryout"></i>Tryouts</span><span><i class="sw practice"></i>Practice</span>
+    <span><i class="sw meeting"></i>Meeting</span><span><i class="sw bus"></i>Bus</span><span><i class="sw holiday"></i>Holiday / no school</span><span><i class="sw nopr"></i>No practice</span>
+  </div>
+  <div class="cal-viewbar">
+    <div class="seg" role="group" aria-label="Calendar view"><button type="button" data-v="month" aria-pressed="true">Month</button><button type="button" data-v="all" aria-pressed="false">Full season</button></div>
+    <div class="cal-nav" id="calNav"><button class="btn" type="button" id="calPrev" aria-label="Previous month">‹</button><b id="calNavLabel"></b><button class="btn" type="button" id="calNext" aria-label="Next month">›</button></div>
+  </div>
+  <div id="calMonths"></div>
+  <div class="cal-list-wrap"><table class="cal-list" id="calGames"></table></div>
+  <p class="help cal-foot" id="calFoot"></p>
+  <p class="sc-foot">Tap any day for details. Questions about the schedule? Contact your coach.</p>
+</main>
+<dialog id="scDay" aria-labelledby="scDayTitle"><div class="dlg"><h2 id="scDayTitle"></h2><ul class="sc-dl" id="scDayList"></ul><div class="actions" style="margin:0"><button class="btn" type="button" id="scDayClose">Close</button></div></div></dialog>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.117.0/dist/umd/supabase.js"></script>
+<script src="js/config.js"></script>
+<script src="js/schedule-core.js"></script>
+<script src="js/schedule.js"></script>
+</body>
+</html>

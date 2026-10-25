@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<base href="/">
+<meta property="og:site_name" content="The Extra Coach">
+<meta property="og:title" content="Game-Day Food Sign-Up">
+<meta property="og:description" content="Pick a game and sign up to bring food. No account needed.">
+<meta property="og:image" content="https://theextracoach.com/icons/icon-512.png">
+<meta property="og:type" content="website">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Game-Day Food Sign-Up · The Extra Coach</title>
+<meta name="description" content="Pick a game and sign up to bring food. No account needed.">
+<meta name="theme-color" content="#5b2a86">
+<meta name="robots" content="noindex">
+<link rel="icon" href="icons/icon-192.png">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Saira+Condensed:wght@500;700;800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap">
+<link rel="stylesheet" href="css/app.css">
+<style>
+/* Parent sign-up: team header, a note from the coach, then one card per game with its open spots */
+body{max-width:640px}
+.su-head{border-bottom:4px solid var(--accent);padding-bottom:12px;margin-bottom:14px;display:flex;gap:12px;align-items:center}
+.su-head img{width:56px;height:56px;object-fit:contain;flex:none}
+.su-head h1{font-size:clamp(30px,8.5vw,44px);font-weight:800;line-height:.95;text-transform:uppercase}
+.su-note{background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:10px;padding:12px 14px;margin:0 0 14px;white-space:pre-wrap;font-size:15.5px}
+.su-how{font-size:14px;color:var(--muted);margin:0 0 14px}
+.su-mine{background:var(--good-soft);border:1px solid color-mix(in srgb,var(--good) 35%,transparent);border-radius:10px;padding:10px 14px;margin:0 0 14px;font-size:14.5px}
+.su-mine h2{font-family:var(--body);font-size:14px;font-weight:600;margin:0 0 4px;color:var(--good)}
+.su-mine ul{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:4px}
+.su-mine li{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.su-game{background:var(--surface);border:1px solid var(--line);border-radius:12px;margin:0 0 12px;overflow:hidden}
+.su-game header{display:grid;grid-template-columns:58px minmax(0,1fr);gap:12px;align-items:center;padding:12px 14px;border-bottom:1px solid var(--line)}
+.su-date{text-align:center;border-radius:8px;background:var(--accent);color:var(--accent-ink);padding:5px 0 6px;line-height:1}
+.su-date small{display:block;font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase}
+.su-date b{display:block;font-family:var(--display);font-size:26px;font-weight:800}
+.su-opp b{display:block;font-family:var(--display);font-size:21px;text-transform:uppercase;line-height:1.05}
+.su-opp small{color:var(--muted);font-size:13.5px}
+.su-slot{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:4px 10px;align-items:center;padding:11px 14px;border-top:1px solid var(--line)}
+.su-slot:first-of-type{border-top:0}
+.su-slot .nm{font-weight:600;font-size:15.5px}
+.su-slot .left{font-size:13px;color:var(--muted)}
+.su-slot .left.full{color:var(--good);font-weight:600}
+.su-slot ul{grid-column:1/-1;margin:0;padding:0;list-style:none;font-size:14px;color:var(--ink)}
+.su-slot ul li::before{content:"✓ ";color:var(--good);font-weight:700}
+.su-slot .btn{min-height:44px;padding:8px 16px}
+.su-empty{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:24px;text-align:center;color:var(--muted);margin-top:10vh}
+dialog .dlg{max-width:440px}
+.su-sum{background:var(--accent-soft);border-radius:8px;padding:10px 12px;font-size:14.5px;margin:0 0 4px}
+.su-done{text-align:center}
+.su-done .tick{width:56px;height:56px;border-radius:50%;background:var(--good);color:#fff;font-size:30px;line-height:56px;margin:0 auto 6px}
+.su-foot{margin-top:24px;font-size:12px;color:var(--muted);text-align:center}
+.su-past{font-size:13.5px;color:var(--muted);text-align:center;margin:8px 0}
+.su-step{font-family:var(--display);font-size:22px;text-transform:uppercase;margin:4px 0 0}
+.su-count{font-size:13.5px;color:var(--muted);margin:2px 0 10px}
+.su-g{background:var(--surface);border:1px solid var(--line);border-radius:12px;margin:0 0 8px;overflow:hidden}
+.su-g.on{border-color:var(--accent);box-shadow:0 0 0 1px var(--accent)}
+.su-row{display:grid;grid-template-columns:52px minmax(0,1fr) auto 14px;gap:10px;align-items:center;width:100%;text-align:left;border:0;background:none;padding:10px 12px;color:inherit;min-height:64px}
+.su-row .su-date{padding:4px 0 5px}.su-row .su-date b{font-size:22px}
+.su-row .su-opp b{font-size:18px}
+.su-st{font-size:12.5px;font-weight:600;border-radius:20px;padding:3px 9px;white-space:nowrap}
+.st-open .su-st{background:var(--accent-soft);color:var(--accent)}
+.st-full .su-st{background:var(--good-soft);color:var(--good)}
+.st-skip .su-st,.st-past .su-st{background:var(--sunk);color:var(--muted)}
+.st-past,.st-skip{opacity:.7}
+.st-past .su-row,.st-skip .su-row{cursor:default}
+.su-chev{font-size:22px;color:var(--muted);transition:transform .2s}
+.su-g.on .su-chev{transform:rotate(90deg)}
+.su-slots{border-top:1px solid var(--line);background:var(--bg)}
+.su-pickhelp{margin:0;padding:10px 14px 0;font-size:13.5px;font-weight:600;color:var(--muted)}
+.su-slots .su-slot{border-top:0}
+.su-pastwrap>summary{cursor:pointer;font-size:14px;font-weight:600;color:var(--muted);margin:0 0 8px}
+@media (max-width:380px){.su-row{grid-template-columns:46px minmax(0,1fr) 14px}.su-row .su-date{grid-row:span 2}.su-st{grid-column:2;grid-row:2;justify-self:start}.su-chev{grid-column:3;grid-row:1}}
+.su-drop{display:inline-block;margin-top:3px;font-size:12.5px;font-weight:700;color:var(--accent);background:var(--accent-soft);border-radius:20px;padding:2px 8px}
+.su-drop.tba{color:var(--muted);background:var(--sunk);font-weight:600}
+.su-opp small{display:block}
+</style>
+</head>
+<body>
+<div id="suLoading" class="su-empty">Loading sign-up…</div>
+<div id="suError" class="su-empty" hidden></div>
+<div id="suDemo" class="demo-bar" hidden><b>Preview.</b> This sign-up is in demo mode, so it only works on this device. Once the app is connected to Supabase, the link works on any phone.</div>
+<main id="suApp" hidden>
+  <header class="su-head"><img id="suLogo" alt="" hidden><div><div class="eyebrow" id="suEyebrow"></div><h1 id="suTitle">Game-day food</h1></div></header>
+  <p class="su-note" id="suNote" hidden></p>
+  <p class="su-how">Pick a game, then pick what you'll bring. No account needed.</p>
+  <section class="su-mine" id="suMine" hidden></section>
+  <h2 class="su-step">Every game this season</h2>
+  <p class="su-count" id="suCount"></p>
+  <div id="suGames"></div>
+  <p class="su-foot">Questions? Contact your coach. Your phone number or email is only shown to the coaching staff.</p>
+</main>
+
+<dialog id="suDlg" aria-labelledby="suDlgTitle">
+  <form class="dlg" id="suForm" method="dialog">
+    <h2 id="suDlgTitle">Sign up</h2>
+    <p class="su-sum" id="suSum"></p>
+    <label class="f">Your name<input id="suName" autocomplete="name" required maxlength="60"></label>
+    <label class="f">Phone or email<input id="suContact" autocomplete="tel" required maxlength="80" placeholder="So the coach can reach you"></label>
+    <label class="f">Your player<input id="suPlayer" maxlength="60" placeholder="Optional"></label>
+    <label class="f">What you'll bring<input id="suItem" maxlength="120" placeholder="Optional, e.g. orange slices and granola bars"></label>
+    <div class="msg" id="suMsg" aria-live="polite"></div>
+    <div class="actions" style="margin:0"><button class="btn primary" type="submit" id="suGo">Sign me up</button><button class="btn" type="button" id="suCancel">Cancel</button></div>
+  </form>
+  <div class="dlg su-done" id="suDone" hidden>
+    <div class="tick" aria-hidden="true">✓</div>
+    <h2>You're signed up</h2>
+    <p id="suDoneText"></p>
+    <div class="actions" style="justify-content:center;margin:0"><button class="btn" type="button" id="suIcs">Add to my calendar</button><button class="btn primary" type="button" id="suOk">Done</button></div>
+  </div>
+</dialog>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.117.0/dist/umd/supabase.js"></script>
+<script src="js/config.js"></script>
+<script src="js/signup.js"></script>
+</body>
+</html>

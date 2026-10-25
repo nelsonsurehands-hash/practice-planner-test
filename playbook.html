@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<base href="/">
+<meta property="og:site_name" content="The Extra Coach">
+<meta property="og:title" content="Team Playbook">
+<meta property="og:description" content="Your team's plays: step through them or watch them run.">
+<meta property="og:image" content="https://theextracoach.com/icons/icon-512.png">
+<meta property="og:type" content="website">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Team Playbook · The Extra Coach</title>
+<meta name="description" content="Your team's plays: step through them or watch them run.">
+<meta name="theme-color" content="#5b2a86">
+<meta name="robots" content="noindex">
+<link rel="icon" href="icons/icon-192.png">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Saira+Condensed:wght@500;700;800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap">
+<link rel="stylesheet" href="css/app.css">
+<style>
+/* Player playbook: a phone-first list of plays, then one play at a time */
+body{max-width:760px}
+.pb-head{border-bottom:4px solid var(--accent);padding-bottom:12px;margin-bottom:14px}
+.pb-head h1{font-size:clamp(30px,8vw,44px);font-weight:800;line-height:1;text-transform:uppercase}
+.pb-head .count{font-size:13px;color:var(--muted);margin-top:6px}
+.pb-tools{display:flex;flex-direction:column;gap:8px;margin-bottom:14px}
+.pb-list{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:10px}
+.pb-card{display:grid;grid-template-columns:96px minmax(0,1fr);gap:10px;align-items:center;text-align:left;border:1px solid var(--line);background:var(--surface);border-radius:10px;padding:8px;color:inherit}
+.pb-card:hover{border-color:var(--accent)}
+.pb-card svg{display:block;width:96px;height:auto;border-radius:5px}
+.pb-card b{display:block;font-size:16px;overflow-wrap:anywhere}
+.pb-card small{display:block;font-size:12.5px;color:var(--muted)}
+.pb-group{margin:18px 0 8px;font-family:var(--display);font-size:18px;text-transform:uppercase;color:var(--accent)}
+.pb-play{display:flex;flex-direction:column;gap:12px}
+.pb-back{align-self:flex-start}
+.pb-play h2{font-size:clamp(28px,7vw,38px);text-transform:uppercase;line-height:1}
+.pb-type{font-size:13px;color:var(--muted)}
+.pb-board{border:1px solid var(--line);border-radius:10px;overflow:hidden}
+.pb-board svg{display:block;width:100%;height:auto}
+.pb-board.opt{box-shadow:0 0 0 3px var(--accent2)}
+.pb-ctrl{display:grid;grid-template-columns:auto 1fr auto;gap:8px;align-items:center}
+.pb-ctrl .btn{padding:10px 14px;font-size:15px}
+.pb-cap{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:12px 14px;font-size:16px;line-height:1.45;min-height:3.2em}
+.pb-cap b{font-family:var(--display);font-size:18px;text-transform:uppercase;color:var(--accent);margin-right:8px}
+.pb-notes{font-size:15px;line-height:1.5;color:var(--ink);white-space:pre-wrap}
+.pb-notes:empty{display:none}
+.pb-legend{font-size:12.5px;color:var(--muted)}
+.pb-next{display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap}
+.pb-empty{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:24px;text-align:center;color:var(--muted);margin-top:10vh}
+.pb-foot{margin-top:28px;font-size:12px;color:var(--muted);text-align:center}
+</style>
+</head>
+<body>
+<div id="pbLoading" class="pb-empty">Loading playbook…</div>
+<div id="pbError" class="pb-empty" hidden></div>
+
+<div id="pbPreviewBar" class="demo-bar" hidden><b>Player view preview.</b> This is what players see. <a href="#" onclick="history.back();return false">‹ Back to the planner</a></div>
+<main id="pbApp" hidden>
+  <header class="pb-head">
+    <div class="pb-brand"><img id="pbLogo" alt="" hidden><div>
+    <div class="eyebrow" id="pbEyebrow"></div>
+    <h1 id="pbTitle">Playbook</h1>
+    </div></div>
+    <div class="count" id="pbCount"></div>
+  </header>
+
+  <section id="pbListView">
+    <div class="pb-tools">
+      <input id="pbSearch" type="search" placeholder="Search plays" aria-label="Search plays">
+      <div class="cats" id="pbTypes"></div>
+    </div>
+    <div id="pbList"></div>
+  </section>
+
+  <section id="pbPlayView" class="pb-play" hidden>
+    <button class="btn pb-back" id="pbBack">‹ All plays</button>
+    <div><h2 id="pbName"></h2><div class="pb-type" id="pbPlayType"></div></div>
+    <div class="opt-banner" id="pbOptBanner" hidden></div>
+    <div class="pb-board" id="pbBoardWrap"><svg id="pbBoard" viewBox="-30 -45 560 530" role="img" aria-label="Play diagram"></svg></div>
+    <div class="pb-ctrl">
+      <button class="btn" id="pbPrev" aria-label="Previous step">‹ Step</button>
+      <button class="btn primary" id="pbRun">▶ Play through</button>
+      <label class="spd" id="pbDefWrap" hidden>Against <select id="pbDef" aria-label="Defense to watch the play against"></select></label>
+      <button class="btn" id="pbNext" aria-label="Next step">Step ›</button>
+    </div>
+    <div class="lines" id="pbLines" hidden></div>
+    <div class="steps" id="pbSteps"></div>
+    <div class="pb-cap" id="pbCap" aria-live="polite"></div>
+    <div class="pb-notes" id="pbNotes"></div>
+    <div class="pb-legend" id="pbLegend"></div>
+    <div class="pb-next"><button class="btn" id="pbPrevPlay">‹ Previous play</button><button class="btn" id="pbNextPlay">Next play ›</button></div>
+  </section>
+  <p class="pb-foot">Shared by your coaches. This page is view-only.</p>
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.117.0/dist/umd/supabase.js"></script>
+<script src="version.js"></script>
+<script src="js/config.js"></script>
+<script src="js/sports.js"></script>
+<script src="js/board.js"></script>
+<script src="js/playbook.js"></script>
+<script src="js/update.js"></script>
+</body>
+</html>
