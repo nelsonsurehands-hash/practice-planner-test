@@ -1,0 +1,899 @@
+{
+ "format": "practice-planner-backup",
+ "version": 1,
+ "exportedAt": "2026-10-15T00:00:00Z",
+ "team": "Riverside Ravens (sample)",
+ "settings": {
+  "sport": "basketball",
+  "school": "Riverside",
+  "mascot": "Ravens",
+  "teamLabel": "8th Grade Basketball (sample team)",
+  "color": "#1f5f8b",
+  "weekdayStart": "15:30",
+  "weekdayEnd": "17:30",
+  "weekendStart": "10:00",
+  "weekendEnd": "12:00",
+  "seasonStart": "2026-11-02",
+  "seasonEnd": "2027-02-12",
+  "practiceDays": [
+   1,
+   2,
+   3,
+   4,
+   5
+  ],
+  "games": [
+   {
+    "date": "2026-11-19",
+    "opponent": "Lakeview",
+    "time": "17:30",
+    "home": true
+   },
+   {
+    "date": "2026-12-03",
+    "opponent": "Oak Ridge",
+    "time": "18:00",
+    "home": false
+   },
+   {
+    "date": "2026-12-15",
+    "opponent": "Westfield",
+    "time": "17:30",
+    "home": true
+   },
+   {
+    "date": "2027-01-12",
+    "opponent": "Cedar Park",
+    "time": "18:00",
+    "home": false
+   },
+   {
+    "date": "2027-01-28",
+    "opponent": "Maple Grove",
+    "time": "17:30",
+    "home": true
+   }
+  ],
+  "special": [
+   {
+    "date": "2026-11-02",
+    "kind": "note",
+    "note": "First practice"
+   },
+   {
+    "date": "2026-11-26",
+    "kind": "off",
+    "note": "Thanksgiving"
+   },
+   {
+    "date": "2026-11-27",
+    "kind": "off",
+    "note": "Thanksgiving break"
+   },
+   {
+    "date": "2026-12-21",
+    "kind": "off",
+    "note": "Winter break"
+   },
+   {
+    "date": "2026-12-22",
+    "kind": "off",
+    "note": "Winter break"
+   },
+   {
+    "date": "2026-12-23",
+    "kind": "off",
+    "note": "Winter break"
+   },
+   {
+    "date": "2026-12-24",
+    "kind": "off",
+    "note": "Winter break"
+   },
+   {
+    "date": "2026-12-25",
+    "kind": "off",
+    "note": "Winter break"
+   },
+   {
+    "date": "2027-01-01",
+    "kind": "off",
+    "note": "New Year's Day"
+   }
+  ]
+ },
+ "drills": [
+  {
+   "id": "starter-dynamic-warmup",
+   "name": "Dynamic Warm-up",
+   "categories": [
+    "Warm-up"
+   ],
+   "category": "Warm-up",
+   "minutes": 8,
+   "description": "Lines baseline to half court and back: high knees, butt kicks, carioca, lunges with twist, defensive slides, backpedal, sprint.",
+   "points": "Full effort on every rep. Talk to each other."
+  },
+  {
+   "id": "starter-two-ball",
+   "name": "Two-Ball Dribbling",
+   "categories": [
+    "Ball handling"
+   ],
+   "category": "Ball handling",
+   "minutes": 6,
+   "description": "Each player with two balls: same-time pounds, alternating, high-low, then walking forward and back.",
+   "points": "Eyes up. Pound the ball below the waist."
+  },
+  {
+   "id": "starter-mikan",
+   "name": "Mikan Drill",
+   "categories": [
+    "Finishing"
+   ],
+   "category": "Finishing",
+   "minutes": 5,
+   "description": "Continuous alternating layups under the rim, right hand off the right side, left hand off the left. Count makes in 30 or 60 seconds.",
+   "points": "Use the backboard. Keep the ball high."
+  },
+  {
+   "id": "starter-3man-weave",
+   "name": "3-Man Weave",
+   "categories": [
+    "Passing",
+    "Transition"
+   ],
+   "category": "Passing",
+   "minutes": 8,
+   "description": "Three lines at the baseline. Pass and go behind the receiver, full court, finish with a layup. Add a 2-on-1 coming back.",
+   "points": "Lead passes, no dribbles. Sprint to fill the lane."
+  },
+  {
+   "id": "starter-form-shooting",
+   "name": "Form Shooting",
+   "categories": [
+    "Shooting"
+   ],
+   "category": "Shooting",
+   "minutes": 8,
+   "description": "Partners, close to the rim. One-hand shots, then two hands, stepping back after every 5 makes.",
+   "points": "Elbow under the ball, hold the follow-through."
+  },
+  {
+   "id": "starter-partner-shooting",
+   "name": "Partner Shooting",
+   "categories": [
+    "Shooting"
+   ],
+   "category": "Shooting",
+   "minutes": 8,
+   "description": "Shooter and rebounder/passer. Shooter moves to 5 spots around the arc; switch after 10 shots.",
+   "points": "Feet ready before the catch. Call for the ball."
+  },
+  {
+   "id": "starter-shell",
+   "name": "Shell Drill (4-on-4)",
+   "categories": [
+    "Defense"
+   ],
+   "category": "Defense",
+   "minutes": 12,
+   "description": "4 offense on the perimeter pass it around; defense moves on every pass to on-ball, deny or help. Add skip passes, then drives.",
+   "points": "Jump to the ball on every pass. Talk: ball, help, deny."
+  },
+  {
+   "id": "starter-closeouts",
+   "name": "Closeouts",
+   "categories": [
+    "Defense"
+   ],
+   "category": "Defense",
+   "minutes": 6,
+   "description": "Defender starts under the rim, passes to a shooter on the wing, closes out with choppy steps, then contains one dribble.",
+   "points": "Sprint then chop. Hands high."
+  },
+  {
+   "id": "starter-box-out",
+   "name": "Box Out Battle",
+   "categories": [
+    "Rebounding",
+    "Defense"
+   ],
+   "category": "Rebounding",
+   "minutes": 6,
+   "description": "3-on-3 inside the lane. Coach shoots; defense must box out and secure the rebound.",
+   "points": "Find, hit, then get the ball. Wide base."
+  },
+  {
+   "id": "starter-ft-sprints",
+   "name": "Free Throw Sprints",
+   "categories": [
+    "Conditioning",
+    "Shooting"
+   ],
+   "category": "Conditioning",
+   "minutes": 5,
+   "description": "A player shoots a free throw: a make cancels the sprint, a miss is a down-and-back for the team.",
+   "points": "Game-pressure free throws while tired."
+  },
+  {
+   "id": "starter-scrimmage",
+   "name": "Controlled Scrimmage",
+   "categories": [
+    "Scrimmage"
+   ],
+   "category": "Scrimmage",
+   "minutes": 15,
+   "description": "5-on-5 with stops to teach. Run the offense and defense from the day's focus.",
+   "points": "Pick one or two things to correct and stick to them."
+  }
+ ],
+ "plays": [
+  {
+   "name": "Horns Pick-and-Roll",
+   "type": "Half-court offense",
+   "notes": "Sample play. Bigs at the elbows, guards in the corners. 1 picks a side and the screener rolls.",
+   "frames": [
+    {
+     "caption": "5 steps up and sets a ball screen for 1.",
+     "tokens": [
+      {
+       "id": "o1",
+       "kind": "o",
+       "n": 1,
+       "x": 250,
+       "y": 350
+      },
+      {
+       "id": "o2",
+       "kind": "o",
+       "n": 2,
+       "x": 455,
+       "y": 55
+      },
+      {
+       "id": "o3",
+       "kind": "o",
+       "n": 3,
+       "x": 45,
+       "y": 55
+      },
+      {
+       "id": "o4",
+       "kind": "o",
+       "n": 4,
+       "x": 170,
+       "y": 190
+      },
+      {
+       "id": "o5",
+       "kind": "o",
+       "n": 5,
+       "x": 330,
+       "y": 190
+      },
+      {
+       "id": "ball",
+       "kind": "ball",
+       "x": 263,
+       "y": 337
+      }
+     ],
+     "actions": [
+      {
+       "id": "a0001",
+       "type": "screen",
+       "from": "o5",
+       "to": null,
+       "x1": 330,
+       "y1": 190,
+       "cx": 328.5,
+       "cy": 255.0,
+       "x2": 285,
+       "y2": 300
+      }
+     ]
+    },
+    {
+     "caption": "1 drives off the screen. 5 rolls to the rim and 4 pops to the top.",
+     "tokens": [
+      {
+       "id": "o1",
+       "kind": "o",
+       "n": 1,
+       "x": 250,
+       "y": 350
+      },
+      {
+       "id": "o2",
+       "kind": "o",
+       "n": 2,
+       "x": 455,
+       "y": 55
+      },
+      {
+       "id": "o3",
+       "kind": "o",
+       "n": 3,
+       "x": 45,
+       "y": 55
+      },
+      {
+       "id": "o4",
+       "kind": "o",
+       "n": 4,
+       "x": 170,
+       "y": 190
+      },
+      {
+       "id": "o5",
+       "kind": "o",
+       "n": 5,
+       "x": 285,
+       "y": 300
+      },
+      {
+       "id": "ball",
+       "kind": "ball",
+       "x": 263,
+       "y": 337
+      }
+     ],
+     "actions": [
+      {
+       "id": "a0002",
+       "type": "dribble",
+       "from": "o1",
+       "to": null,
+       "x1": 250,
+       "y1": 350,
+       "cx": 350.0,
+       "cy": 350.0,
+       "x2": 370,
+       "y2": 230
+      },
+      {
+       "id": "a0003",
+       "type": "cut",
+       "from": "o5",
+       "to": null,
+       "x1": 285,
+       "y1": 300,
+       "cx": 322.5,
+       "cy": 165.0,
+       "x2": 270,
+       "y2": 90
+      },
+      {
+       "id": "a0004",
+       "type": "cut",
+       "from": "o4",
+       "to": null,
+       "x1": 170,
+       "y1": 190,
+       "cx": 180.0,
+       "cy": 285.0,
+       "x2": 230,
+       "y2": 320
+      }
+     ]
+    },
+    {
+     "caption": "1 hits 5 on the roll, or kicks to 2 in the corner if the help comes.",
+     "tokens": [
+      {
+       "id": "o1",
+       "kind": "o",
+       "n": 1,
+       "x": 370,
+       "y": 230
+      },
+      {
+       "id": "o2",
+       "kind": "o",
+       "n": 2,
+       "x": 455,
+       "y": 55
+      },
+      {
+       "id": "o3",
+       "kind": "o",
+       "n": 3,
+       "x": 45,
+       "y": 55
+      },
+      {
+       "id": "o4",
+       "kind": "o",
+       "n": 4,
+       "x": 230,
+       "y": 320
+      },
+      {
+       "id": "o5",
+       "kind": "o",
+       "n": 5,
+       "x": 270,
+       "y": 90
+      },
+      {
+       "id": "ball",
+       "kind": "ball",
+       "x": 383,
+       "y": 217
+      }
+     ],
+     "actions": [
+      {
+       "id": "a0005",
+       "type": "pass",
+       "from": "o1",
+       "to": "o5",
+       "x1": 370,
+       "y1": 230,
+       "cx": 320.0,
+       "cy": 160.0,
+       "x2": 270,
+       "y2": 90
+      },
+      {
+       "id": "a0006",
+       "type": "pass",
+       "from": "o1",
+       "to": "o2",
+       "x1": 370,
+       "y1": 230,
+       "cx": 412.5,
+       "cy": 142.5,
+       "x2": 455,
+       "y2": 55
+      }
+     ]
+    }
+   ],
+   "updatedAt": 1792000000000,
+   "id": "horns-pick-and-roll"
+  },
+  {
+   "name": "5-Out Drive and Kick",
+   "type": "Half-court offense",
+   "notes": "Sample play. Spread the floor, attack the gap, and kick to the open shooter.",
+   "frames": [
+    {
+     "caption": "1 drives the right gap. 2 lifts, 4 drifts to the slot.",
+     "tokens": [
+      {
+       "id": "o1",
+       "kind": "o",
+       "n": 1,
+       "x": 250,
+       "y": 330
+      },
+      {
+       "id": "o2",
+       "kind": "o",
+       "n": 2,
+       "x": 425,
+       "y": 245
+      },
+      {
+       "id": "o3",
+       "kind": "o",
+       "n": 3,
+       "x": 75,
+       "y": 245
+      },
+      {
+       "id": "o4",
+       "kind": "o",
+       "n": 4,
+       "x": 455,
+       "y": 55
+      },
+      {
+       "id": "o5",
+       "kind": "o",
+       "n": 5,
+       "x": 45,
+       "y": 55
+      },
+      {
+       "id": "ball",
+       "kind": "ball",
+       "x": 263,
+       "y": 317
+      }
+     ],
+     "actions": [
+      {
+       "id": "a0007",
+       "type": "dribble",
+       "from": "o1",
+       "to": null,
+       "x1": 250,
+       "y1": 330,
+       "cx": 320.0,
+       "cy": 270.0,
+       "x2": 310,
+       "y2": 170
+      },
+      {
+       "id": "a0008",
+       "type": "cut",
+       "from": "o2",
+       "to": null,
+       "x1": 425,
+       "y1": 245,
+       "cx": 467.5,
+       "cy": 292.5,
+       "x2": 440,
+       "y2": 330
+      },
+      {
+       "id": "a0009",
+       "type": "cut",
+       "from": "o4",
+       "to": null,
+       "x1": 455,
+       "y1": 55,
+       "cx": 462.5,
+       "cy": 92.5,
+       "x2": 420,
+       "y2": 140
+      }
+     ]
+    },
+    {
+     "caption": "1 kicks to 4 for the shot, or to 2 if 4 is covered.",
+     "tokens": [
+      {
+       "id": "o1",
+       "kind": "o",
+       "n": 1,
+       "x": 310,
+       "y": 170
+      },
+      {
+       "id": "o2",
+       "kind": "o",
+       "n": 2,
+       "x": 440,
+       "y": 330
+      },
+      {
+       "id": "o3",
+       "kind": "o",
+       "n": 3,
+       "x": 75,
+       "y": 245
+      },
+      {
+       "id": "o4",
+       "kind": "o",
+       "n": 4,
+       "x": 420,
+       "y": 140
+      },
+      {
+       "id": "o5",
+       "kind": "o",
+       "n": 5,
+       "x": 45,
+       "y": 55
+      },
+      {
+       "id": "ball",
+       "kind": "ball",
+       "x": 323,
+       "y": 157
+      }
+     ],
+     "actions": [
+      {
+       "id": "a0010",
+       "type": "pass",
+       "from": "o1",
+       "to": "o4",
+       "x1": 310,
+       "y1": 170,
+       "cx": 365.0,
+       "cy": 155.0,
+       "x2": 420,
+       "y2": 140
+      }
+     ]
+    }
+   ],
+   "updatedAt": 1792000000000,
+   "id": "5-out-drive-and-kick"
+  },
+  {
+   "name": "Box Inbound Stack",
+   "type": "Baseline inbound",
+   "notes": "Sample play. Two screens at once from a box set.",
+   "frames": [
+    {
+     "caption": "4 down screens for 2; 5 screens across for 3.",
+     "tokens": [
+      {
+       "id": "o1",
+       "kind": "o",
+       "n": 1,
+       "x": 300,
+       "y": -25
+      },
+      {
+       "id": "o2",
+       "kind": "o",
+       "n": 2,
+       "x": 165,
+       "y": 95
+      },
+      {
+       "id": "o3",
+       "kind": "o",
+       "n": 3,
+       "x": 335,
+       "y": 95
+      },
+      {
+       "id": "o4",
+       "kind": "o",
+       "n": 4,
+       "x": 170,
+       "y": 190
+      },
+      {
+       "id": "o5",
+       "kind": "o",
+       "n": 5,
+       "x": 330,
+       "y": 190
+      },
+      {
+       "id": "ball",
+       "kind": "ball",
+       "x": 313,
+       "y": -38
+      }
+     ],
+     "actions": [
+      {
+       "id": "a0011",
+       "type": "screen",
+       "from": "o4",
+       "to": null,
+       "x1": 170,
+       "y1": 190,
+       "cx": 174.0,
+       "cy": 155.0,
+       "x2": 178,
+       "y2": 120
+      },
+      {
+       "id": "a0012",
+       "type": "screen",
+       "from": "o5",
+       "to": null,
+       "x1": 330,
+       "y1": 190,
+       "cx": 325.0,
+       "cy": 132.5,
+       "x2": 300,
+       "y2": 105
+      }
+     ]
+    },
+    {
+     "caption": "2 pops to the corner, 3 cuts to the rim. 1 finds the open player.",
+     "tokens": [
+      {
+       "id": "o1",
+       "kind": "o",
+       "n": 1,
+       "x": 300,
+       "y": -25
+      },
+      {
+       "id": "o2",
+       "kind": "o",
+       "n": 2,
+       "x": 165,
+       "y": 95
+      },
+      {
+       "id": "o3",
+       "kind": "o",
+       "n": 3,
+       "x": 335,
+       "y": 95
+      },
+      {
+       "id": "o4",
+       "kind": "o",
+       "n": 4,
+       "x": 178,
+       "y": 120
+      },
+      {
+       "id": "o5",
+       "kind": "o",
+       "n": 5,
+       "x": 300,
+       "y": 105
+      },
+      {
+       "id": "ball",
+       "kind": "ball",
+       "x": 313,
+       "y": -38
+      }
+     ],
+     "actions": [
+      {
+       "id": "a0013",
+       "type": "cut",
+       "from": "o2",
+       "to": null,
+       "x1": 165,
+       "y1": 95,
+       "cx": 77.5,
+       "cy": 172.5,
+       "x2": 40,
+       "y2": 40
+      },
+      {
+       "id": "a0014",
+       "type": "cut",
+       "from": "o3",
+       "to": null,
+       "x1": 335,
+       "y1": 95,
+       "cx": 277.5,
+       "cy": 62.5,
+       "x2": 230,
+       "y2": 60
+      },
+      {
+       "id": "a0015",
+       "type": "pass",
+       "from": "o1",
+       "to": "o3",
+       "x1": 300,
+       "y1": -25,
+       "cx": 265.0,
+       "cy": 17.5,
+       "x2": 230,
+       "y2": 60
+      }
+     ]
+    }
+   ],
+   "updatedAt": 1792000000000,
+   "id": "box-inbound-stack"
+  }
+ ],
+ "plans": [
+  {
+   "date": "2026-11-03",
+   "start": "15:30",
+   "end": "17:30",
+   "focus": "Sample practice: spacing and ball-screen reads",
+   "blocks": [
+    {
+     "id": "b0",
+     "drillId": "starter-dynamic-warmup",
+     "name": "Dynamic Warm-up",
+     "category": "Warm-up",
+     "minutes": 8,
+     "notes": ""
+    },
+    {
+     "id": "b1",
+     "drillId": "starter-two-ball",
+     "name": "Two-Ball Dribbling",
+     "category": "Ball handling",
+     "minutes": 6,
+     "notes": ""
+    },
+    {
+     "id": "b2",
+     "drillId": "starter-3man-weave",
+     "name": "3-Man Weave",
+     "category": "Passing / Transition",
+     "minutes": 8,
+     "notes": ""
+    },
+    {
+     "id": "b3",
+     "drillId": null,
+     "name": "Water break",
+     "category": "",
+     "minutes": 3,
+     "notes": ""
+    },
+    {
+     "id": "b4",
+     "drillId": "starter-form-shooting",
+     "name": "Form Shooting",
+     "category": "Shooting",
+     "minutes": 8,
+     "notes": ""
+    },
+    {
+     "id": "b5",
+     "drillId": "starter-shell",
+     "name": "Shell Drill (4-on-4)",
+     "category": "Defense",
+     "minutes": 12,
+     "notes": ""
+    },
+    {
+     "id": "b6",
+     "drillId": "starter-closeouts",
+     "name": "Closeouts",
+     "category": "Defense",
+     "minutes": 6,
+     "notes": ""
+    },
+    {
+     "id": "b7",
+     "drillId": null,
+     "name": "Water break",
+     "category": "",
+     "minutes": 3,
+     "notes": ""
+    },
+    {
+     "id": "b8",
+     "drillId": "starter-partner-shooting",
+     "name": "Partner Shooting",
+     "category": "Shooting",
+     "minutes": 8,
+     "notes": ""
+    },
+    {
+     "id": "b9",
+     "drillId": "starter-box-out",
+     "name": "Box Out Battle",
+     "category": "Rebounding / Defense",
+     "minutes": 6,
+     "notes": ""
+    },
+    {
+     "id": "b10",
+     "drillId": "starter-scrimmage",
+     "name": "Controlled Scrimmage",
+     "category": "Scrimmage",
+     "minutes": 20,
+     "notes": ""
+    },
+    {
+     "id": "bp",
+     "drillId": null,
+     "playId": "horns-pick-and-roll",
+     "name": "Horns Pick-and-Roll",
+     "category": "Play \u00b7 Half-court offense",
+     "minutes": 10,
+     "notes": "Install"
+    },
+    {
+     "id": "bft",
+     "drillId": null,
+     "name": "Free throws",
+     "category": "",
+     "minutes": 17,
+     "notes": ""
+    },
+    {
+     "id": "btt",
+     "drillId": null,
+     "name": "Team talk",
+     "category": "",
+     "minutes": 5,
+     "notes": ""
+    }
+   ]
+  }
+ ]
+}

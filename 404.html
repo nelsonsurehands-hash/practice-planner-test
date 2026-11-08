@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<base href="/">
+<title>The Extra Coach</title>
+<meta name="robots" content="noindex">
+<link rel="icon" href="icons/icon-192.png">
+<style>
+body{margin:0;font:16px/1.5 system-ui,-apple-system,sans-serif;background:#f6f4f8;color:#17141c;display:grid;place-items:center;min-height:100vh;text-align:center;padding:16px;box-sizing:border-box}
+@media (prefers-color-scheme:dark){body{background:#141218;color:#eee}}
+a{color:#5b2a86;font-weight:600}
+</style>
+</head>
+<body>
+<main id="nf" hidden><h1>Page not found</h1><p>This link may be mistyped or old. Ask your coach for the current one.</p><p><a href="/">Go to The Extra Coach</a></p></main>
+<script>
+/* Short parent links: /c/<code> calendar, /f/<code> food sign-up, /p/<code> playbook.
+   GitHub Pages has no such files, so it serves this page; it loads the right page in place
+   (the address stays short, and each page reads its code from the address). */
+(function(){
+  var m=location.pathname.match(/^\/(c|f|p)\/[A-Za-z0-9]+\/?$/);
+  if(!m){document.getElementById("nf").hidden=false;return;}
+  var page={c:"schedule.html",f:"signup.html",p:"playbook.html"}[m[1]];
+  fetch("/"+page,{cache:"no-cache"}).then(function(r){if(!r.ok)throw 0;return r.text();})
+    .then(function(html){document.open();document.write(html);document.close();})
+    .catch(function(){location.replace("/"+page+"?"+({c:"c",f:"s",p:"pb"}[m[1]])+"="+location.pathname.split("/")[2]+location.search.replace(/^\?/,"&"));});
+})();
+</script>
+</body>
+</html>
